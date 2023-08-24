@@ -1,0 +1,44 @@
+#include<iostream>
+#include<string>
+#include <cstdlib>
+#include <windows.h>
+using namespace std;
+
+bool IgPunjab_check(string var){
+	int length = var.length();
+	for (int i=0;i<length - 1;i++){
+		if (var[i] == 'I' && var[i+1] == 'g'){
+			return true;
+		}
+	}
+	return false;
+}
+
+string constable_dialogue[3] = {
+	"teri phen da phudda\n",
+	"teri ma da phudda\n",
+	"Ig punjab di wi phen da phudda\n"
+};
+
+string reporter_dialogue[4]={
+	"hanji kia haal he?\n",
+	"aap gali kiun de rhe hein?\n",
+	"record karo is ko dekho gali de rha he\n",
+	"Ig Punjab saab aap dekhe aap ko gali de rha he\n"
+};
+
+int main() {
+	int i = 0;
+	while(i < 4){
+		cout <<"Reporter: " <<reporter_dialogue[i]<<endl;
+		Sleep(1000);
+		if(IgPunjab_check(reporter_dialogue[i]))
+			cout <<"Constable: " <<constable_dialogue[2]<<endl;
+		else{
+			int j = rand() % 2;
+			cout<<"Constable: " <<constable_dialogue[j]<<endl;
+		}
+		i++;
+		Sleep(1000);
+	}
+}
